@@ -1,0 +1,56 @@
+
+
+1. What is Inheritance? Try to explain in Mandarin.
+//繼承 ，可以藉由繼承來取用已經定義的類別或方法
+
+open class Base(p: Int)
+class Derived(p: Int) : Base(p)
+//利用":"來繼承class Base，class Base 前面需要加上open
+
+open class Shape {
+    open fun draw() { /*...*/ }
+    fun fill() { /*...*/ }
+}
+
+class Circle() : Shape() {
+    override fun draw() { /*...*/ }
+    //利用"override"來繼承fun draw()，fun draw()前面需要加上open
+
+}
+
+2. How to split a string in Android? Explain your understanding, and even better to attach some sample code.
+//用split分割字串
+val str = "This is a string"
+val split = str.split(' ') //用空格拆
+println(split) //[This, is, a, string]
+
+3. What kind of key-value pair collection do we use in Android? Attach a sample code that uses for-loop to print each key-value pair.
+//使用map
+val mapOfAbc = mapOf("A" to 17, "B" to 18, "C" to 19)
+
+for (fruit in mapOfAbc) {
+    println("${fruit.key} (${fruit.value})")
+    會依序印出
+    A (17)
+    B (18)
+    C (19)
+
+4. What’s the difference between ArrayList and LinkedList? Try to explain in Mandarin. 
+//
+ArrayList 是連續的記憶體空間，需要事先宣告固定的記憶體空間，因為有排列順序，有index，在讀取與修改的速度較快，但在刪除與新增資料時速度較慢
+
+LinkedList 是不連續的記憶體空間，由一個資料指向下一筆資料再指向下一筆資料，不用事先定義好不用事先定義好一塊連續的記憶體空間，所以在新增或刪除的速度較快，不過在取資料時與修改資料時，需要從節點的開頭開始尋找，速度較慢。
+
+5. What are Value Type variables? List out the Value Type variables you know.
+//
+1. Numbers – Byte, Short, Int, Long, Float, Double
+2. Boolean – True, false
+3. Characters
+4. Arrays
+5. Strings
+
+
+6. What’s the maximum value of Int? If you want to represent integers larger than the limit, what should you do instead of using int variables?
+Int :2^32  -2147483647 to 2147483648
+Long:2^64  -9223372036854775807 to 9223372036854775808
+
