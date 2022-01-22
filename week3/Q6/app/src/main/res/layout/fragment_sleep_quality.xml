@@ -134,7 +134,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Please enter any information for this night"
-            android:text="@{sleepQualityViewModel.editTextView}"
+            android:text="@={sleepQualityViewModel.editTextView}"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

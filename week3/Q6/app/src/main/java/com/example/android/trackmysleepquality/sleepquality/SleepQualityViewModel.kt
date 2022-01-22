@@ -16,6 +16,7 @@
 
 package com.example.android.trackmysleepquality.sleepquality
 import android.text.TextUtils
+import androidx.databinding.Bindable
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -76,9 +77,11 @@ class SleepQualityViewModel(
 //    val editTextView = ObservableField<String>("")
 
 
-    private val _editTextView = MutableLiveData("")
-    val editTextView: LiveData<String>
-        get() = _editTextView
+//    private val _editTextView = MutableLiveData("")
+//    val editTextView: LiveData<String>
+//        get() = _editTextView
+    
+    val editTextView = MutableLiveData<String>()
 
 
     fun onSetSleepQuality(quality: Int) {
