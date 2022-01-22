@@ -1,0 +1,164 @@
+
+
+1. What is Encapsulation? Try to list out the benefits of Encapsulation.
+//指的是封裝，可以將物件(class)內部的資料隱藏起來，只能夠過該物件本身去存取內部的資料或方法，其他物件不能直接存取該物件的資料及了解該物件細節。
+好處是，可以保護該物件的內部狀態，避免其他物件任意更改內部資料，可以讓程式碼更容易理解及維護，也增加安全性
+
+
+2. Try to explain what enum is and why we use them.
+//列舉型別，可以放入一連串的常數，例如放入NORTH, SOUTH, EAST, WEST
+取值被限定在一定範圍內的場景，因為這樣的特性，可以盡可能排除變數不明改變，導致程式整個壞掉的風險。
+
+
+3. How to use enum in Kotlin? Attach a sample code that uses enum in Kotlin.
+
+enum class 裡面可以帶入常數，例如
+
+    enum class Direction {
+        NORTH, SOUTH, EAST, WEST
+        }
+
+可以透過類別名存取
+
+    val direction = Direction.NORTH
+    println(direction) // NORTH
+
+也可以加上屬性和函數，透過分號來區分常數和其他區塊
+
+    enum class Color(val rgb: Int) {
+        RED(0xFF0000),
+        GREEN(0x00FF00),
+        BLUE(0x0000FF),
+        PINK(0xFFCCCC);
+
+        fun containsRed() = (this.rgb and 0xFF0000 != 0)
+}
+
+
+
+4. What are the differences between LinearLayout and RelativeLayout? Try to explain in detail.
+//
+LinearLayout 線性佈局，有兩個方向 - 水平與垂直， 當 orientation(方向)為水平，LinearLayout 內的元件為水平排列，當 orientation 為垂直，LinearLayout 內的元件為垂直排列。
+
+舉例來說，水平排列的按鈕
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Button 1" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Button 2" />
+
+        </LinearLayout>
+
+舉例來說，垂直排列的按鈕
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button 1" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button 2" />
+
+        </LinearLayout>
+
+RelativeLayout 相對佈局，元件的位置可以對照整個 RelativeLayout 或是其他元件的位置。
+
+    舉例來說，要使一個按鈕對齊整個 RelativeLayout(父框架)的右下方，則
+        <RelativeLayout>
+        <Button
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            />
+            </RelativeLayout>
+        
+        若要垂直置中於整個 RelativeLayout(父框架)，則
+        <RelativeLayout>
+        <Button
+            android:layout_centerVertical="true"
+            />
+            </RelativeLayout>
+    
+    使按鈕 A 對齊按鈕 B 的上方並對齊按鈕Ｂ的右邊，則
+
+            <Button
+                android:id="@+id/B_button"
+                android:text="Button B" />
+
+                <Button
+                android:layout_above="@id/B_button"
+                android:layout_alignRight="@id/B_button"
+                android:text="Button A" />
+
+    RelativeLayout 的相關對齊方式詳列於下方
+
+        相對於父框架之方向
+
+        android:layout_alignParentTop  對齊父框架之上方。
+
+        android:layout_alignParentBottom  對齊父框架之下方。
+
+        android:layout_alignParentLeft  對齊父框架之左方。
+
+        android:layout_alignParentRight  對齊父框架之右方。
+
+        於父框架之置中
+        
+        android:layout_centerHorizontal  水平置中
+
+        android:layout_centerVertical  垂直置中
+
+        android:layout_centerInParent  水平、垂直皆置中
+
+        放置於子元件或子框架的特定方向
+        
+        android:layout_above  在被對齊元件的上方
+
+        android:layout_below  在被對齊元件的下方
+
+        android:layout_toLeftOf  在被對齊元件的左方
+
+        android:layout_toRightOf  在被對齊元件的右方
+
+        對齊子元件或子框架的邊線
+        
+        android:layout_alignTop  對齊被對齊元件的上邊線
+
+        android:layout_alignBottom  對齊被對齊元件的下邊線
+
+        android:layout_alignLeft  對齊被對齊元件的左邊線
+
+        android:layout_alignRight  對齊被對齊元件的右邊線
+
+    
+
+
+5. Try to explain the benefits of ConstraintLayout. Why should you use it?
+
+ConstraintLayout 把 xml 檔變得更加扁平，所以就不需要很多層次的layout，可以提升效能。
+預設會使元件在左上角，若對一個 View 的 Left（Start），Top，Right（End），Bottom 四個方向添加 Constraint 條件，就可以確定這個 View 的位置。
+
+ConstraintLayout 的好處如下
+1.減少層級，性能提高
+2.視覺化編輯器更完善，提升開發效率
+3.額外的實用特性（Chain/Bias/Guideline/Barrier）
+
+
+
+
+
+
+
+
