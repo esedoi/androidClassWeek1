@@ -1,0 +1,57 @@
+1. What is Polymorphism? Try to explain in Mandarin.
+//
+維基百科上定義為：多型指為不同資料類型的實體提供統一的介面
+舉例來說，狗跟貓都是動物，貓會喵喵叫，狗會汪汪叫，我們可以統一用叫聲(roar)這個 function 來分別應用狗和貓身上
+abstract class Animal (var name:String){
+    abstract fun roar()
+    }
+
+class Dog(name:String):Animal(name:Stirng){
+    override fun roar(){
+        pintln("${name}j汪汪叫")
+        }
+    }
+
+class Cat(name:String):Animal(name:Stirng){
+    override fun roar(){
+        pintln("${name}喵喵叫")
+        }
+    }
+
+fun main(){
+    var animal1＝ Cat("小黑")
+    var animal2 ＝ Dog("小白")
+    animal1.roar()
+    animal2.roar()
+}
+
+
+
+2. Here are the 7 important lifecycle methods of an Activity:
+i. onCreate()
+ii. onStart()
+iii. onResume()
+iv. onPause()
+v. onStop()
+vi. onDestroy()
+Try to explain when they are called during the lifecycle of Activity.
+//
+onCreate(): 調用後，創建 Activity 
+onStart(): 接續 onCreate() ，調用後，Activity 呈現螢幕上，但還不能與用戶交互作用
+onResume(): 接續 onStart()，調用後，可以與用戶進行交互作用
+onPause(): 調用後， Activity 進入暫停階段，在螢幕上還是可見
+onStop(): 調用後，Activity 不可見，退至後台
+onDestroy():調用後，完全結束 Activity
+onRestart():Activity 沒有完全結束，僅在onStop()時，時，用戶重新調用activity，會進入到onStart()
+
+3. What is the Android Jetpack?
+2018 年在 Google I/O大會上發布，根據官網介紹，jetpack 是一個庫，幫助開發者開發更加高效、高品質的App，減少重複性，複雜的任務模塊化，更加專注應用本身，又稱為androidx 獨立於底層API，所以更加靈活，維護及更新會比 android 更新更快，會是 android 官方引導下未來的開發方向。分為四大模塊
+Foundation
+Architecture
+Behavior
+UI
+
+4. What is Coroutines? Why do we use it? Try to explain in Mandarin.
+//
+協程，讓開發者處理非同步問題，且可以讓非同步程式看起來就像同步程式一樣。
+在很多情境下，許多函數會是耗時的操作，例如api串接，不應直接在主線程上進行，coroutines 是處理這類非同步問題的一個方法之一，可以讓程式碼更加簡潔也更簡單，看起來就像同步執行一樣。coroutines 允函式被”suspend”，避免主線程佔用，後續也可以在恢復，並從暫停保留的狀態繼續執行。
