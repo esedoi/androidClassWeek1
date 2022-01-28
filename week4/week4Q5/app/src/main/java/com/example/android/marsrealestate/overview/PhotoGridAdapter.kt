@@ -22,6 +22,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.databinding.GridViewItemBinding
 import com.example.android.marsrealestate.network.MarsProperty
 
@@ -39,7 +40,23 @@ class PhotoGridAdapter( val onClickListener: OnClickListener ) :
     class MarsPropertyViewHolder(private var binding: GridViewItemBinding):
             RecyclerView.ViewHolder(binding.root) {
         fun bind(marsProperty: MarsProperty) {
+
+
+            val typeFormat = when(marsProperty.isRental){
+                true -> binding.root.context.getString(R.string.type_rent)
+                false -> binding.root.context.getString(R.string.type_sale)
+            }
+
+             val priceFormat = when(marsProperty.isRental){
+                true -> binding.root.context.getString(R.string.display_price_monthly_rental)
+                false -> binding.root.context.getString(R.string.display_price)
+            }
+
+            marsProperty.priceFormat = priceFormat
+            marsProperty.typeFormat = typeFormat
             binding.property = marsProperty
+
+
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
             binding.executePendingBindings()
@@ -77,6 +94,11 @@ class PhotoGridAdapter( val onClickListener: OnClickListener ) :
             onClickListener.onClick(marsProperty)
         }
         holder.bind(marsProperty)
+
+
+
+
+
     }
 
     /**

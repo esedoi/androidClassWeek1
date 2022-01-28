@@ -46,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:padding="2dp"
-            android:text="@{property.resultType}" />
+            android:text="@{String.format(@string/display_type,property.typeFormat)}"
+            />
 
         <TextView
             android:id="@+id/textView5"
@@ -55,7 +56,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:padding="2dp"
-            android:text="@{String.valueOf(property.price)}" />
+            android:text="@{String.format(property.priceFormat,property.price)}"/>
 
 
 

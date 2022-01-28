@@ -23,6 +23,8 @@ import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.overview.MarsApiStatus
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
+import android.app.Application
+import android.provider.Settings.Global.getString
 
 /**
  * Gets Mars real estate property information from the Mars API Retrofit service and updates the
@@ -36,18 +38,24 @@ data class MarsProperty(
         // used to map img_src from the JSON to imgSrcUrl in our class
         @Json(name = "img_src") val imgSrcUrl: String,
         val type: String,
-        val price: Double) : Parcelable {
+        val price: Double
+        ) : Parcelable {
     val isRental
         get() = type == "rent"
 
-    val resultType = when(isRental){
-        true -> R.string.type_rent
-        false -> R.string.type_sale
-    }
 
-//        val resultPrice = when(isRental){
-//            true -> R.string.display_price_monthly_rental
-//            false -> R.string.display_price
+ var typeFormat:String = ""
+    var priceFormat = ""
+
+//    val resultType = when(isRental){
+//            true ->  R.string.type_rent
+//            false -> R.string.type_sale
 //        }
+//
+//
+//    var resultPrice = when(isRental){
+//        true -> R.string.display_price_monthly_rental
+//        false -> R.string.display_price
+//    }
 
 }
